@@ -1,2 +1,6 @@
-Test
+Maven -Kompiler und Testvorgänge anstoßen
+
+Um den Komiplier vorgang anzustoßen finden wir in der IDE unter Maven-> Plugin -> compiler den richtigen Unterpunkt. Alternativ nutzen wir über die Kommandozeile den Befehl -mvn compile.
+Den Testvorgang starten wir in der IDE unter Maven -> Lifecycle -> test.
+
 
