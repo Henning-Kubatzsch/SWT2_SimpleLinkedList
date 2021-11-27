@@ -4,3 +4,11 @@ Um den Komiplier vorgang anzustoßen finden wir in der IDE unter Maven-> Plugin 
 Den Testvorgang starten wir in der IDE unter Maven -> Lifecycle -> test.
 
 
+JUnit 5/ AssertJ Depedency
+
+Um Junit 5 und AssertJ nutzen zu können werden jeweil in der pom.xml dependencies eingefügt. Jeder Eintrag hat folgende Unterpunkte:
+- groupId: Einzigartiger Identifier der Gruppe/Organisation, welche das Project entwickelt haben. 
+- artifactId: Identifiziert das Artefakt.
+- version: Gibt die Version des Artefakts an.
+
+
