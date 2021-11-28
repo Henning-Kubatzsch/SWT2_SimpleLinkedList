@@ -19,3 +19,4 @@ JaCoCo -> konfigurieren in Maven/ IDE, Welche Adeckung wird unterstützt, wie ko
 Die Testabdeckung (von JUnit Tests) kannn gemessen und visualisiert werden. 
 Während des BUILD verbindet sich ein JaCoCo-Agent mit der JVM. JaCoCo kann sehen welche Klassen aufgerufen und welche Lines ausgeführt werden. Damit werden Code-Statistiken gesammelt.
 Um Jacoco in der IDE zu konfigurieren werden die entsprechenden Dependencies und Plugins in der pom.xml deklariert. Der JaCoCo Java Agent wird Abdeckungsinformation sammeln wenn das maven-surefire-plugin die Tests durchläuft.
+Nacheinander wird MAVEN CLEAN, MAVEN TEST ausgeführt. Der Report liegt dann unter target -> site -> jacoco -> index.html.
