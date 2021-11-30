@@ -58,8 +58,9 @@ public class SimpleLinkedList<E> extends AbstractCollection<E> implements Collec
 
         @Override
         public E next() {
+            E e = current.elem;
             current = current.next;
-            return current.elem;
+            return e;
         }
 
         @Override
