@@ -1,5 +1,7 @@
 package st2e3;
 
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Collection;
@@ -9,8 +11,13 @@ import static org.assertj.core.api.Assertions.*;
 
 public class TestSimpleLinkedList {
 
-    private static Collection<Integer> emptyList = new SimpleLinkedList<Integer>();
-    private static Collection<Integer> list1 = new SimpleLinkedList<Integer>();
+    private Collection<Integer> emptyList;
+    private Collection<Integer> list1;
+    @BeforeEach
+    void init() {
+        emptyList = new SimpleLinkedList<>();
+        list1 = new SimpleLinkedList<>();
+    }
 
     @Test
     public void testEmptyListSize(){
@@ -34,12 +41,11 @@ public class TestSimpleLinkedList {
 
         assertThat(iter1.hasNext()).isFalse();
         assertThat(iter2.hasNext()).isTrue();
-        /**
+
+        /*
          * start testIterator manually and you get 2
          * start with MAVEN TEST you get 1
          */
         assertThat(iter2.next()).isEqualTo(2);
-
     }
-
 }
