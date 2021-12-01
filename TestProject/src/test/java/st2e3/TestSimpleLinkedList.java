@@ -1,6 +1,5 @@
 package st2e3;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -8,8 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Collection;
 import java.util.Iterator;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class TestSimpleLinkedList {
@@ -61,6 +59,7 @@ class TestSimpleLinkedList {
 
         @BeforeEach
         void init(){
+            // test with full linkedList
             for (int value : values) {
                 list1.add(value);
             }
@@ -70,7 +69,8 @@ class TestSimpleLinkedList {
 
         @Test
         void iteratorTest() {
-            assertNotNull(list1.iterator(), "does not return iterator");
+            // should return iterator
+            assertThat(list1.iterator()).isNotNull();
         }
 
         @Test
@@ -81,19 +81,19 @@ class TestSimpleLinkedList {
 
         @Test
         void hasNext() {
-            assertFalse(emptyList.iterator().hasNext(), "returns true while empty");
-            assertTrue(list1.iterator().hasNext(), "returns false while filled");
+            assertThat(emptyList.iterator().hasNext()).isFalse();
+            assertThat(list1.iterator().hasNext()).isTrue();
         }
 
         @Test
         void nextTest() {
             int i = 0;
             while(iter.hasNext()){
-                assertTrue(i < values.length, "list contains additional elements");
-                assertEquals(values[i], iter.next(), "wrong element at position " + i);
+                assertThat(i < values.length).isTrue();
+                assertThat(iter.next()).isEqualTo(values[i]);
                 i++;
             }
-            assertEquals(values.length, i, "missing elements");
+            assertThat(values.length).isEqualTo(i);
             assertThrows(NullPointerException.class, () -> iter.next(),
                     "still contains elements after full iteration");
 
@@ -110,7 +110,7 @@ class TestSimpleLinkedList {
             oneElementList.add(1);
             Iterator<Integer> OELIter = oneElementList.iterator();
             for(int i = 0; i < 4; i++) {
-                assertTrue(OELIter.hasNext(), "hasNext() is not idempotent");
+                assertThat(OELIter.hasNext()).isTrue();
             }
         }
     }
