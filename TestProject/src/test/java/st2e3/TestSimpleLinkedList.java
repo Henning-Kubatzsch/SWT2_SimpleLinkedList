@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Collection;
 import java.util.Iterator;
 
+import static java.util.Collections.emptyIterator;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -35,8 +36,19 @@ class TestSimpleLinkedList {
     }
 
     @Test
-    public void testAddFunction(){
+    public void testNullParametersAdd(){
+        // check how add function handles null objects
+        assertThat(list1.add(null)).isFalse();
+    }
 
+    @Test
+    public void testNextEmptyIterator(){
+        // check how add function handles null objects
+        assertThat(emptyList.iterator()).isEqualTo(emptyIterator());
+    }
+
+    @Test
+    public void testAddFunction(){
         // checking first add
         assertThat(list1.add(values[0])).isTrue();
 
@@ -65,7 +77,6 @@ class TestSimpleLinkedList {
             }
             iter = list1.iterator();
         }
-
 
         @Test
         void iteratorTest() {
@@ -96,7 +107,6 @@ class TestSimpleLinkedList {
             assertThat(values.length).isEqualTo(i);
             assertThrows(NullPointerException.class, () -> iter.next(),
                     "still contains elements after full iteration");
-
         }
 
         @Test
