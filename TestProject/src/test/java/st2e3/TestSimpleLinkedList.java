@@ -13,6 +13,7 @@ public class TestSimpleLinkedList {
 
     private Collection<Integer> emptyList;
     private Collection<Integer> list1;
+
     @BeforeEach
     void init() {
         emptyList = new SimpleLinkedList<>();
