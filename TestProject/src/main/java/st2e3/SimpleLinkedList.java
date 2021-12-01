@@ -27,6 +27,9 @@ public class SimpleLinkedList<E> extends AbstractCollection<E> implements Collec
 
     @Override
     public boolean add(E o) {
+        if(o == null){
+            return false;
+        }
         Elem e = new Elem(o, null);
         if (start == null) {
             start = e;
