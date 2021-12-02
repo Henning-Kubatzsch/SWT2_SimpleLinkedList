@@ -6,6 +6,8 @@ package st2e3;
 import java.util.AbstractCollection;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
+import static java.util.Collections.emptyIterator;
 
 /**
  * Achtung! Einige der Methoden sind fehlerhaft und müssen repariert werden.
@@ -27,6 +29,10 @@ public class SimpleLinkedList<E> extends AbstractCollection<E> implements Collec
 
     @Override
     public boolean add(E o) {
+        if (o == null){
+            return false;
+        }
+
         Elem e = new Elem(o, null);
         if (start == null) {
             start = e;
