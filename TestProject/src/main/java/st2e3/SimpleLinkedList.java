@@ -64,9 +64,12 @@ public class SimpleLinkedList<E> extends AbstractCollection<E> implements Collec
 
         @Override
         public E next() {
-            E e = current.elem;
+            E currentElement = current.elem;
+            if (!hasNext()){
+                throw new NoSuchElementException();
+            }
             current = current.next;
-            return e;
+            return currentElement;
         }
 
         @Override
