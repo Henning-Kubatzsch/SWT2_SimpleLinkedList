@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import static java.util.Collections.emptyIterator;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -42,12 +43,6 @@ class TestSimpleLinkedList {
     }
 
     @Test
-    public void testNextEmptyIterator(){
-        // check how add function handles null objects
-        assertThat(emptyList.iterator()).isEqualTo(emptyIterator());
-    }
-
-    @Test
     public void testAddFunction(){
         // checking first add
         assertThat(list1.add(values[0])).isTrue();
@@ -76,6 +71,13 @@ class TestSimpleLinkedList {
                 list1.add(value);
             }
             iter = list1.iterator();
+        }
+
+        @Test
+        void emptyTest() {
+            // would be smart to return emptyIterator instead of an empty Iterator
+            assertThat(emptyList.iterator()).isEqualTo(emptyIterator());
+            assertThat(emptyList.iterator().hasNext()).isFalse();
         }
 
         @Test
@@ -111,7 +113,8 @@ class TestSimpleLinkedList {
 
         @Test
         void nextOnEmptyListTest() {
-            assertThrows(NullPointerException.class, () -> emptyList.iterator().next());
+            // next should test {@link https://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html#next--}
+            assertThrows(NoSuchElementException.class, () -> emptyList.iterator().next());
         }
 
         @Test
