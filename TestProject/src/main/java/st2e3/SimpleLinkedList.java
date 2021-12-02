@@ -80,6 +80,8 @@ public class SimpleLinkedList<E> extends AbstractCollection<E> implements Collec
 
     @Override
     public Iterator<E> iterator() {
-        return new Iter();
+
+        // returns emptyIterator static object when list is empty
+        return this.size() == 0 ? emptyIterator(): new Iter();
     }
 }
