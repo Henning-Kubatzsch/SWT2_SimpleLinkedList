@@ -46,7 +46,8 @@
                         <id>report</id>
                         <phase>test</phase>
                         <goals>
-                            <goal>gui</goal>    <!-- goal spotbugs gibt stattdessen Bericht als xml aus (unter jacoco.exec) -->
+                            <goal>spotbugs</goal>
+                            <goal>gui</goal>
                         </goals>
                     </execution>
                 </executions>
